@@ -2,12 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-
-// Use the shared Supabase client
 import { supabase } from "@/integrations/supabase/client";
+import type { Tables } from "@/integrations/supabase/types";
 
 const TasksPage = () => {
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<Tables<"tasks">[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Fetch all tasks from Supabase
