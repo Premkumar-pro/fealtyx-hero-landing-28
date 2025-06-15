@@ -109,7 +109,7 @@ const SignUpPage = () => {
             Sign up to manage bugs and releases.
           </p>
         </div>
-        {/* --- Clerk Form Uncomment below to restore Clerk
+        {/* --- Clerk Form Uncomment below to restore Clerk 
         <SignUp routing="path" path="/sign-up" appearance={appearance} />
         --- */}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
@@ -258,3 +258,4 @@ const SignUpPage = () => {
 };
 
 export default SignUpPage;
+
