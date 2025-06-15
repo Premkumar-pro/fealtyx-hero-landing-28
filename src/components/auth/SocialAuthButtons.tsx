@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { github as GithubIcon, google as GoogleIcon } from "lucide-react";
+import { Github, Google } from "lucide-react";
 
 // Mock handlers for social sign-in
 function mockSignIn(provider: "google" | "github", redirectTo: string) {
@@ -55,7 +55,7 @@ export const SocialAuthButtons: React.FC<{
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
           </svg>
         ) : (
-          <GoogleIcon size={20} strokeWidth={2} className="mr-2" />
+          <Google size={20} strokeWidth={2} className="mr-2" />
         )}
         Sign in with Google
       </Button>
@@ -72,7 +72,7 @@ export const SocialAuthButtons: React.FC<{
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
           </svg>
         ) : (
-          <GithubIcon size={20} strokeWidth={2} className="mr-2" />
+          <Github size={20} strokeWidth={2} className="mr-2" />
         )}
         Sign in with GitHub
       </Button>
