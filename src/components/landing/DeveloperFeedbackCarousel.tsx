@@ -78,8 +78,8 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
     };
     updateSlides();
     window.addEventListener("resize", updateSlides);
-    // FIX: Return only the cleanup function, don't return a function-returning function
-    return function cleanup() {
+    // FIX: Return only the cleanup function, not a function-returning-function!
+    return () => {
       window.removeEventListener("resize", updateSlides);
     };
   }, []);
