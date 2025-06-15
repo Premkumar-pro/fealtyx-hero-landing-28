@@ -3,14 +3,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 
-// IMPORTANT: Be sure you have @supabase/supabase-js installed in your project.
-import { createClient } from "@supabase/supabase-js";
-
-// You will need to get these values from Project Settings -> API in Supabase dashboard
-// In Lovable, use the green Supabase panel "API keys" section to get your URL and anon key
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Use the shared Supabase client
+import { supabase } from "@/integrations/supabase/client";
 
 const TasksPage = () => {
   const [tasks, setTasks] = useState<any[]>([]);
