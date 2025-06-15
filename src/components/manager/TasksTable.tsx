@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Task } from "@/pages/ManagerDashboard";
+import { Task } from "@/types/task";
 
 const statusColors: Record<string, string> = {
   "Open": "bg-blue-200 text-blue-800 dark:bg-blue-900 dark:text-blue-200",

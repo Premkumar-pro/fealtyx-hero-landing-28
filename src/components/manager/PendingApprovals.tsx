@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { RotateCw, BadgeCheck } from "lucide-react"; // Changed Reopen to RotateCw
-import { Task } from "@/pages/ManagerDashboard";
+import { Task } from "@/types/task";
 
 type Props = {
   tasks: Task[];
