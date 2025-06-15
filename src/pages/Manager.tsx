@@ -40,9 +40,10 @@ export default function ManagerDashboardShell() {
 
   return (
     <ProtectedRoute requiredRole="manager">
-      <div className="flex min-h-screen bg-muted">
+      <div className="flex min-h-screen bg-muted dark:bg-background transition-colors duration-300">
         <DashboardSidebar />
         <div className="flex flex-col flex-1 min-h-screen">
+          {/* Topbar is now empty, AppLayout provides top bar */}
           <Topbar />
           <main className="flex-1">
             <Routes>

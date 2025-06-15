@@ -197,9 +197,10 @@ export default function DeveloperDashboard() {
   if (loading) return <PageLoader text="Loading dashboard..." />;
 
   return (
-    <div className="flex flex-col w-full">
-      {/* Sticky header */}
-      <div className="sticky top-0 z-30 bg-background/70 backdrop-blur border-b py-4 px-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+    <div className="flex flex-col w-full bg-background dark:bg-background transition-colors duration-300">
+      {/* Content only, header handled by AppLayout */}
+      {/* Sticky header with Create Task modal remains for dashboard-specific UI */}
+      <div className="sticky top-0 z-30 bg-background/70 dark:bg-background/80 backdrop-blur border-b py-4 px-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 transition-colors">
         <div className="text-2xl font-bold tracking-tight">Developer Dashboard</div>
         {/* Create Task Modal */}
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
