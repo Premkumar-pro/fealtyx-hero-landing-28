@@ -1,9 +1,9 @@
-
 import { HeroSection } from "@/components/landing/HeroSection";
 import { FeatureShowcase } from "@/components/landing/FeatureShowcase";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { Footer } from "@/components/landing/Footer";
+import { DeveloperFeedbackSection } from "@/components/landing/DeveloperFeedbackSection";
 import { DeveloperFeedbackCarousel } from "@/components/landing/DeveloperFeedbackCarousel";
 
 const Index = () => {
@@ -15,7 +15,8 @@ const Index = () => {
       <FeatureShowcase />
       <TestimonialsSection />
       <FAQSection />
-      {/* NEW: Developer carousel above footer */}
+      {/* NEW: Developer grid section above carousel/footer */}
+      <DeveloperFeedbackSection />
       <DeveloperFeedbackCarousel />
       <Footer />
     </div>
@@ -23,4 +24,3 @@ const Index = () => {
 };
 
 export default Index;
-
