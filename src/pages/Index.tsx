@@ -1,8 +1,10 @@
+
 import { HeroSection } from "@/components/landing/HeroSection";
 import { FeatureShowcase } from "@/components/landing/FeatureShowcase";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { Footer } from "@/components/landing/Footer";
+import { DeveloperFeedbackCarousel } from "@/components/landing/DeveloperFeedbackCarousel";
 
 const Index = () => {
   // Remove page-level navbar, only use layout
@@ -13,9 +15,12 @@ const Index = () => {
       <FeatureShowcase />
       <TestimonialsSection />
       <FAQSection />
+      {/* NEW: Developer carousel above footer */}
+      <DeveloperFeedbackCarousel />
       <Footer />
     </div>
   );
 };
 
 export default Index;
+
