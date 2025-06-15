@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { Reopen, BadgeCheck } from "lucide-react";
+import { RotateCw, BadgeCheck } from "lucide-react"; // Changed Reopen to RotateCw
 import { Task } from "@/pages/ManagerDashboard";
 
 type Props = {
@@ -41,7 +41,7 @@ export default function PendingApprovals({ tasks, onApprove, onReopen }: Props) 
                   <TableCell>{task.developer}</TableCell>
                   <TableCell className="flex gap-2">
                     <Button
-                      variant="success"
+                      variant="default" // Changed from "success" to "default"
                       size="sm"
                       onClick={() => onApprove(task.id)}
                       className="flex gap-1"
@@ -55,7 +55,7 @@ export default function PendingApprovals({ tasks, onApprove, onReopen }: Props) 
                       onClick={() => onReopen(task.id)}
                       className="flex gap-1"
                     >
-                      <Reopen className="w-4 h-4" />
+                      <RotateCw className="w-4 h-4" />
                       Reopen
                     </Button>
                   </TableCell>
