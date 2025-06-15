@@ -21,7 +21,7 @@ export const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
-                <a href="/login">Get Started</a>
+                <a href="/sign-in">Get Started</a>
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8 py-6">
                 Watch Demo

@@ -2,10 +2,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { UserButton, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -32,11 +32,16 @@ export const Navbar = () => {
             </div>
           </div>
 
-          {/* Desktop Login Button */}
+          {/* Desktop Auth Buttons */}
           <div className="hidden md:block">
-            <Button asChild>
-              <a href="/login">Login</a>
-            </Button>
+            <SignedOut>
+              <Button asChild>
+                <a href="/sign-in">Login</a>
+              </Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
 
           {/* Mobile menu button */}
@@ -73,9 +78,14 @@ export const Navbar = () => {
                 FAQ
               </a>
               <div className="pt-2">
-                <Button asChild className="w-full">
-                  <a href="/login">Login</a>
-                </Button>
+                <SignedOut>
+                  <Button asChild className="w-full">
+                    <a href="/sign-in">Login</a>
+                  </Button>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/" />
+                </SignedIn>
               </div>
             </div>
           </div>
