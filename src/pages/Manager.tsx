@@ -1,41 +1,59 @@
-import { useUser, SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
-import { useUserRole } from "@/hooks/useUserRole";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Manager = () => {
-  const { isLoaded: userLoaded } = useUser();
-  const { role, isLoading } = useUserRole();
+import { useEffect } from "react";
+import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
+import { useUserRoleContext } from "@/context/UserRoleContext";
+import PageLoader from "@/components/layout/PageLoader";
+import { DashboardSidebar } from "@/components/layout/Sidebar";
+import { Topbar } from "@/components/layout/Topbar";
+import { ProtectedRoute } from "@/routes/ProtectedRoute";
+
+// Placeholder child pages
+function AllBugs() {
+  return (
+    <div className="p-6">
+      <h2 className="font-bold text-xl mb-2">All Submitted Bugs</h2>
+      <div className="bg-card p-4 rounded shadow text-muted-foreground">[All bug reports here]</div>
+    </div>
+  );
+}
+function TimeLogs() {
+  return (
+    <div className="p-6">
+      <h2 className="font-bold text-xl mb-2">Developer Time Logs</h2>
+      <div className="bg-card p-4 rounded shadow text-muted-foreground">[Time logs here]</div>
+    </div>
+  );
+}
+
+export default function ManagerDashboardShell() {
+  const { role, loading } = useUserRoleContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading && userLoaded) {
-      if (role !== "manager") {
-        navigate(role === "developer" ? "/dashboard" : "/");
-      }
+    if (!loading && role === "developer") {
+      navigate("/dashboard", { replace: true });
     }
-  }, [role, isLoading, userLoaded, navigate]);
+  }, [role, loading, navigate]);
 
-  if (isLoading || !userLoaded) {
-    return <div className="min-h-screen flex items-center justify-center text-xl">Loading manager panel...</div>;
-  }
+  if (loading) return <PageLoader text="Loading Manager Panel..." />;
+  if (role === null) return <Navigate to="/404" replace />;
 
   return (
-    <>
-      <SignedIn>
-        <div className="min-h-screen flex items-center justify-center">
-          <h1 className="text-3xl font-bold">Welcome to Manager Panel</h1>
+    <ProtectedRoute requiredRole="manager">
+      <div className="flex min-h-screen bg-muted">
+        <DashboardSidebar />
+        <div className="flex flex-col flex-1 min-h-screen">
+          <Topbar />
+          <main className="flex-1">
+            <Routes>
+              <Route index element={<AllBugs />} />
+              <Route path="bugs" element={<AllBugs />} />
+              <Route path="logs" element={<TimeLogs />} />
+              <Route path="*" element={<Navigate to="/manager" />} />
+            </Routes>
+          </main>
         </div>
-      </SignedIn>
-      <SignedOut>
-        <div className="min-h-screen flex items-center justify-center">
-          <SignInButton fallbackRedirectUrl="/manager">
-            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-lg">Sign In</button>
-          </SignInButton>
-        </div>
-      </SignedOut>
-    </>
+      </div>
+    </ProtectedRoute>
   );
-};
-
-export default Manager;
+}
