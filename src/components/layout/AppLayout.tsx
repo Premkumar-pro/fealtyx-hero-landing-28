@@ -4,9 +4,13 @@ import { useUser, UserButton, SignedIn, SignedOut } from "@clerk/clerk-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { user } = useUser();
+  const location = useLocation();
+  const isLanding = location.pathname === "/";
 
   return (
     <div className="min-h-screen flex flex-col bg-background dark:bg-background transition-colors duration-300">
@@ -31,12 +35,29 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <UserButton afterSignOutUrl="/sign-in" />
             </div>
           ) : (
-            // Only show on landing/auth, not within dashboards
-            <SignedOut>
-              <Button asChild variant="outline" className="ml-2">
-                <a href="/sign-in">Login</a>
-              </Button>
-            </SignedOut>
+            <>
+              {/* Only show styled login button on landing, else show old one */}
+              {isLanding ? (
+                <SignedOut>
+                  <motion.a
+                    href="/sign-in"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="ml-2 inline-block px-7 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-md transition-all duration-200 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400 group"
+                    style={{ boxShadow: "0 4px 18px 0 rgba(108, 71, 255, 0.17)" }}
+                  >
+                    <span className="relative z-10">Login</span>
+                  </motion.a>
+                </SignedOut>
+              ) : (
+                <SignedOut>
+                  <Button asChild variant="outline" className="ml-2">
+                    <a href="/sign-in">Login</a>
+                  </Button>
+                </SignedOut>
+              )}
+            </>
           )}
         </div>
       </header>
