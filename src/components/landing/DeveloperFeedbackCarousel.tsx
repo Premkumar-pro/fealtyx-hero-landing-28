@@ -71,15 +71,15 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
   const [slidesPerView, setSlidesPerView] = React.useState(1);
 
   React.useEffect(() => {
-    const updateSlides = () => {
+    function updateSlides() {
       if (window.innerWidth >= 1024) setSlidesPerView(3);
       else if (window.innerWidth >= 768) setSlidesPerView(2);
       else setSlidesPerView(1);
-    };
+    }
     updateSlides();
     window.addEventListener("resize", updateSlides);
-    // FIX: Return only the cleanup function, not a function-returning-function!
-    return () => {
+    // Ensure only a single non-nested cleanup function.
+    return function cleanup() {
       window.removeEventListener("resize", updateSlides);
     };
   }, []);
