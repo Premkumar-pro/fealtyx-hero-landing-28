@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
@@ -6,6 +5,7 @@ import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SocialAuthButtons, SocialEmailDivider } from "@/components/auth/SocialAuthButtons";
 
 // --- Clerk code commented for future reference ---
 // import { SignUp } from "@clerk/clerk-react";
@@ -109,6 +109,9 @@ const SignUpPage = () => {
             Sign up to manage bugs and releases.
           </p>
         </div>
+        {/* Social Auth Buttons */}
+        <SocialAuthButtons />
+        <SocialEmailDivider />
         {/* --- Clerk Form Uncomment below to restore Clerk 
         <SignUp routing="path" path="/sign-up" appearance={appearance} />
         --- */}
@@ -258,4 +261,3 @@ const SignUpPage = () => {
 };
 
 export default SignUpPage;
-

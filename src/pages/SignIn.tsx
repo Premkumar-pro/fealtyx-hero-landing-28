@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SocialAuthButtons, SocialEmailDivider } from "@/components/auth/SocialAuthButtons";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -88,6 +88,11 @@ const SignInPage = () => {
           <p className="text-sm text-muted-foreground text-center mb-4">
             Enter your credentials to access the dashboard.
           </p>
+        </div>
+        {/* Social Auth Buttons */}
+        <div>
+          <SocialAuthButtons />
+          <SocialEmailDivider />
         </div>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
           {/* Email Field */}
