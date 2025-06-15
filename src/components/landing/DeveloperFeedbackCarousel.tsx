@@ -79,7 +79,9 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
     };
     updateSlides();
     window.addEventListener("resize", updateSlides);
-    return () => window.removeEventListener("resize", updateSlides);
+    return () => {
+      window.removeEventListener("resize", updateSlides);
+    };
   }, []);
 
   // Pagination dots
