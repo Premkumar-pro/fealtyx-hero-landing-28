@@ -1,4 +1,3 @@
-
 import { useUser, SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useEffect } from "react";
@@ -30,7 +29,7 @@ const Dashboard = () => {
       </SignedIn>
       <SignedOut>
         <div className="min-h-screen flex items-center justify-center">
-          <SignInButton redirectUrl="/dashboard">
+          <SignInButton fallbackRedirectUrl="/dashboard">
             <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-lg">Sign In</button>
           </SignInButton>
         </div>
