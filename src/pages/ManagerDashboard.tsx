@@ -1,5 +1,6 @@
 
 import React, { useMemo, useState } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
 import DashboardSummaryCards from "@/components/manager/DashboardSummaryCards";
@@ -190,44 +191,46 @@ export default function ManagerDashboardPage() {
 
   // Responsive layout with sticky sidebar/header
   return (
-    <div className="flex min-h-screen bg-muted dark:bg-background transition-colors duration-300">
-      <DashboardSidebar />
-      <div className="flex flex-col flex-1 min-h-screen">
-        <Topbar />
-        <main className="flex-1 px-4 sm:px-8 py-8 max-w-7xl mx-auto w-full">
-          <DashboardSummaryCards stats={summaryStats} />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
-            <section>
-              <div className="mb-2 flex flex-col sm:flex-row sm:items-end gap-3">
-                <TaskFilterBar
-                  statusFilter={statusFilter}
-                  setStatusFilter={setStatusFilter}
-                  priorityFilter={priorityFilter}
-                  setPriorityFilter={setPriorityFilter}
-                  devFilter={devFilter}
-                  setDevFilter={setDevFilter}
-                  statuses={statuses}
-                  priorities={priorities}
-                  developers={developers}
-                  sortBy={sortBy}
-                  setSortBy={setSortBy}
-                  sortDir={sortDir}
-                  setSortDir={setSortDir}
+    <SidebarProvider>
+      <div className="flex min-h-screen bg-muted dark:bg-background transition-colors duration-300">
+        <DashboardSidebar />
+        <div className="flex flex-col flex-1 min-h-screen">
+          <Topbar />
+          <main className="flex-1 px-4 sm:px-8 py-8 max-w-7xl mx-auto w-full">
+            <DashboardSummaryCards stats={summaryStats} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+              <section>
+                <div className="mb-2 flex flex-col sm:flex-row sm:items-end gap-3">
+                  <TaskFilterBar
+                    statusFilter={statusFilter}
+                    setStatusFilter={setStatusFilter}
+                    priorityFilter={priorityFilter}
+                    setPriorityFilter={setPriorityFilter}
+                    devFilter={devFilter}
+                    setDevFilter={setDevFilter}
+                    statuses={statuses}
+                    priorities={priorities}
+                    developers={developers}
+                    sortBy={sortBy}
+                    setSortBy={setSortBy}
+                    sortDir={sortDir}
+                    setSortDir={setSortDir}
+                  />
+                </div>
+                <TasksTable tasks={filtered} />
+              </section>
+              <aside className="space-y-8">
+                <PendingApprovals
+                  tasks={pendingApprovals}
+                  onApprove={approveBug}
+                  onReopen={reopenBug}
                 />
-              </div>
-              <TasksTable tasks={filtered} />
-            </section>
-            <aside className="space-y-8">
-              <PendingApprovals
-                tasks={pendingApprovals}
-                onApprove={approveBug}
-                onReopen={reopenBug}
-              />
-              <TrendsChart data={chartData} />
-            </aside>
-          </div>
-        </main>
+                <TrendsChart data={chartData} />
+              </aside>
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }
