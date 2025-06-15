@@ -11,6 +11,7 @@ import DashboardShell from "./pages/Dashboard";
 import ManagerDashboardShell from "./pages/Manager";
 import { UserRoleProvider } from "@/context/UserRoleContext";
 import AppLayout from "@/components/layout/AppLayout";
+import TasksPage from "./pages/TasksPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/manager/*" element={<ManagerDashboardShell />} />
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
+              <Route path="/tasks" element={<TasksPage />} />
             </Routes>
           </AppLayout>
         </BrowserRouter>
