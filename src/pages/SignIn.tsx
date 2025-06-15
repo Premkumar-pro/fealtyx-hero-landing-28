@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SocialAuthButtons, SocialEmailDivider } from "@/components/auth/SocialAuthButtons";
+// Removed: import { SocialAuthButtons, SocialEmailDivider } from "@/components/auth/SocialAuthButtons";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -89,11 +89,7 @@ const SignInPage = () => {
             Enter your credentials to access the dashboard.
           </p>
         </div>
-        {/* Social Auth Buttons */}
-        <div>
-          <SocialAuthButtons />
-          <SocialEmailDivider />
-        </div>
+        {/* Social Auth Buttons removed */}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
           {/* Email Field */}
           <div>
