@@ -1,16 +1,17 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
+import NewTaskForm from "@/components/tasks/NewTaskForm";
 
 const TasksPage = () => {
   const [tasks, setTasks] = useState<Tables<"tasks">[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Fetch all tasks from Supabase
-  useEffect(() => {
+  const fetchTasks = useCallback(() => {
     setLoading(true);
     supabase
       .from("tasks")
@@ -30,9 +31,15 @@ const TasksPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
   return (
     <div className="max-w-xl mx-auto mt-12 px-4">
       <h1 className="text-2xl font-bold mb-6">Tasks</h1>
+      <NewTaskForm onTaskCreated={fetchTasks} />
+
       {loading ? (
         <div>Loading tasks...</div>
       ) : (
