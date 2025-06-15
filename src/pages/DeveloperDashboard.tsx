@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Card,
@@ -167,14 +166,16 @@ export default function DeveloperDashboard() {
     e.preventDefault();
     setFormLoading(true);
     try {
-      // Simulate POST
-      // const res = await fetch('/api/tasks', { method: 'POST', ... })
+      // --- EXPLICIT CASTING FOR PRIORITY ---
       const newTask: Task = {
         id: Math.random().toString(36).slice(2),
         ...form,
         assignee: "You",
         timeSpent: 0,
         timerRunning: false,
+        // Enforce correct priority type (TypeScript knows the union, this is safe)
+        priority: form.priority as "Low" | "Medium" | "High",
+        status: form.status as "Open" | "In Progress" | "Pending Approval" | "Closed",
       };
       setTasks((prev) => [newTask, ...prev]);
       setDialogOpen(false);
@@ -302,7 +303,11 @@ export default function DeveloperDashboard() {
                 <CardTitle className="flex items-center gap-2">
                   {task.title}
                   {task.status === "Pending Approval" ? (
-                    <Lock size={18} className="ml-1 text-warning" title="Pending Approval" />
+                    // REMOVE 'title' PROP BELOW
+                    <>
+                      <Lock size={18} className="ml-1 text-warning" />
+                      <span className="sr-only">Pending Approval</span>
+                    </>
                   ) : null}
                 </CardTitle>
                 <CardDescription className="mt-1 line-clamp-2">
