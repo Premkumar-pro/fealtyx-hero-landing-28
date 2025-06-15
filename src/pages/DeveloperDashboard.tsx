@@ -263,28 +263,28 @@ export default function DeveloperDashboard() {
       {/* Filters section */}
       <div className="flex flex-wrap gap-3 px-6 py-4 bg-background">
         <Select
-          value={statusFilter || ""}
-          onValueChange={val => setStatusFilter(val || null)}
+          value={statusFilter ?? "all"}
+          onValueChange={val => setStatusFilter(val === "all" ? null : val)}
         >
           <SelectTrigger className="w-44">
             <SelectValue placeholder="Filter: Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Statuses</SelectItem>
+            <SelectItem value="all">All Statuses</SelectItem>
             {statuses.map(s => (
               <SelectItem value={s} key={s}>{s}</SelectItem>
             ))}
           </SelectContent>
         </Select>
         <Select
-          value={priorityFilter || ""}
-          onValueChange={val => setPriorityFilter(val || null)}
+          value={priorityFilter ?? "all"}
+          onValueChange={val => setPriorityFilter(val === "all" ? null : val)}
         >
           <SelectTrigger className="w-44">
             <SelectValue placeholder="Filter: Priority" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Priorities</SelectItem>
+            <SelectItem value="all">All Priorities</SelectItem>
             {priorities.map(p => (
               <SelectItem value={p} key={p}>{p}</SelectItem>
             ))}
