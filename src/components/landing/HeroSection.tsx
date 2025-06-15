@@ -20,10 +20,22 @@ export const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg px-8 py-6" asChild>
-                <a href="/sign-in">Get Started</a>
+              <Button
+                size="lg"
+                className="relative text-lg px-8 py-6 shadow-lg font-bold animate-fade-in transform transition-transform duration-200 border-2 border-primary bg-primary text-primary-foreground hover:scale-105 hover:shadow-primary/80 hover:shadow-[0_0_24px_4px] focus:ring-2 focus:ring-primary"
+                asChild
+              >
+                <a href="/sign-in">
+                  Get Started
+                  {/* Glow effect */}
+                  <span className="absolute inset-0 pointer-events-none rounded-lg bg-primary/30 blur-lg opacity-0 group-hover:opacity-80 transition-opacity duration-200"></span>
+                </a>
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6"
+              >
                 Watch Demo
               </Button>
             </div>
