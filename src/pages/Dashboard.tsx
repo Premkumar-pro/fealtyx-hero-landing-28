@@ -22,18 +22,20 @@ const Dashboard = () => {
   }
 
   return (
-    <SignedIn>
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-3xl font-bold">Welcome to Developer Dashboard</h1>
-      </div>
-    </SignedIn>
-    <SignedOut>
-      <div className="min-h-screen flex items-center justify-center">
-        <SignInButton redirectUrl="/dashboard">
-          <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-lg">Sign In</button>
-        </SignInButton>
-      </div>
-    </SignedOut>
+    <>
+      <SignedIn>
+        <div className="min-h-screen flex items-center justify-center">
+          <h1 className="text-3xl font-bold">Welcome to Developer Dashboard</h1>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        <div className="min-h-screen flex items-center justify-center">
+          <SignInButton redirectUrl="/dashboard">
+            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-lg">Sign In</button>
+          </SignInButton>
+        </div>
+      </SignedOut>
+    </>
   );
 };
 
