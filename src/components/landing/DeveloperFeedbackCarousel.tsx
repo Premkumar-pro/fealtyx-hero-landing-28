@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -79,7 +78,8 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
     };
     updateSlides();
     window.addEventListener("resize", updateSlides);
-    return () => {
+    // FIX: Return only the cleanup function, don't return a function-returning function
+    return function cleanup() {
       window.removeEventListener("resize", updateSlides);
     };
   }, []);
@@ -169,4 +169,3 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
     </section>
   );
 };
-
