@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Carousel,
@@ -55,17 +56,20 @@ const SLIDES_PER_VIEW = {
 };
 
 export const DeveloperFeedbackCarousel: React.FC = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    align: "center",
-    slidesToScroll: 1,
-    breakpoints: {
-      "(min-width: 1024px)": { slidesToScroll: 1 },
-      "(min-width: 768px)": { slidesToScroll: 1 }
-    }
-  }, [
-    Autoplay({ delay: 3500, stopOnInteraction: false })
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "center",
+      slidesToScroll: 1,
+      breakpoints: {
+        "(min-width: 1024px)": { slidesToScroll: 1 },
+        "(min-width: 768px)": { slidesToScroll: 1 }
+      }
+    },
+    [
+      Autoplay({ delay: 3500, stopOnInteraction: false })
+    ]
+  );
 
   // Responsive perView logic (JS-based since shadcn carousel doesn't do this natively)
   const [slidesPerView, setSlidesPerView] = React.useState(1);
@@ -93,7 +97,10 @@ export const DeveloperFeedbackCarousel: React.FC = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
     };
     emblaApi.on("select", onSelect);
-    return () => emblaApi.off("select", onSelect);
+    // ONLY return a cleanup function if emblaApi exists!
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   return (
