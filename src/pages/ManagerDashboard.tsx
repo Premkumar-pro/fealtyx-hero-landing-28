@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/layout/Sidebar";
@@ -8,7 +7,6 @@ import TaskFilterBar from "@/components/manager/TaskFilterBar";
 import TasksTable from "@/components/manager/TasksTable";
 import PendingApprovals from "@/components/manager/PendingApprovals";
 import TrendsChart from "@/components/manager/TrendsChart";
-
 import { useToast } from "@/hooks/use-toast";
 
 // Dummy data types
@@ -189,14 +187,16 @@ export default function ManagerDashboardPage() {
   // Tasks pending approval
   const pendingApprovals = tasks.filter(t => t.status === "Pending Approval");
 
-  // Responsive layout with sticky sidebar/header
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-muted dark:bg-background transition-colors duration-300">
-        <DashboardSidebar />
-        <div className="flex flex-col flex-1 min-h-screen">
-          <Topbar />
-          <main className="flex-1 px-4 sm:px-8 py-8 max-w-7xl mx-auto w-full">
+      <div className="bg-muted dark:bg-background min-h-screen w-full">
+        {/* Sticky header */}
+        <Topbar />
+        <div className="flex min-h-[calc(100vh-4rem)] pt-16">
+          {/* Sidebar */}
+          <DashboardSidebar />
+          {/* Main content (flex-1) */}
+          <div className="flex-1 px-4 sm:px-8 py-8 max-w-7xl mx-auto w-full">
             <DashboardSummaryCards stats={summaryStats} />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
               <section>
@@ -228,7 +228,7 @@ export default function ManagerDashboardPage() {
                 <TrendsChart data={chartData} />
               </aside>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </SidebarProvider>

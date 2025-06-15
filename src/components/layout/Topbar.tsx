@@ -1,7 +1,30 @@
 
-// This file will only be used in dashboards, but top layout comes from AppLayout. Remove ThemeToggle and header here.
-import { UserButton, useUser } from "@clerk/clerk-react";
+import React from "react";
 import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { useSidebar } from "@/components/ui/sidebar";
 
-// Remove duplicated topbar, or make it just an empty fragment.
-export const Topbar = () => <></>;
+// The topbar renders a sticky header with a sidebar toggle button (☰) on the left.
+export const Topbar = () => {
+  const { toggleSidebar } = useSidebar();
+
+  return (
+    <header className="sticky top-0 left-0 z-40 w-full h-16 flex items-center justify-between bg-background/80 dark:bg-background backdrop-blur-md shadow-md transition-colors duration-300">
+      <div className="flex items-center gap-3">
+        {/* Sidebar menu toggle button on mobile/desktop when sidebar is collapsed */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleSidebar}
+          className="mr-2 md:hidden"
+          aria-label="Open Sidebar Menu"
+        >
+          <Menu className="w-6 h-6" />
+        </Button>
+        <a href="/" className="text-xl font-bold text-primary dark:text-white ml-2">FealtyX</a>
+      </div>
+      {/* Right section (optional: user controls, etc.) */}
+      <div />
+    </header>
+  );
+};
