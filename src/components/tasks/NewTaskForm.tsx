@@ -21,8 +21,29 @@ const NewTaskForm: React.FC<NewTaskFormProps> = ({ onTaskCreated }) => {
       return;
     }
     setLoading(true);
+
+    // Get the current authenticated user
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      toast({
+        title: "Not signed in",
+        description: "You must be signed in to create a task.",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+
     const { error } = await supabase.from("tasks").insert([
-      { title, description: description || null }
+      {
+        title,
+        description: description || null,
+        user_id: user.id,
+      },
     ]);
     if (error) {
       toast({
