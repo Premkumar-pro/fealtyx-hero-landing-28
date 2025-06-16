@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+Project Overview FealtyX is a bug/task tracking web application built using React.js with Vite as the build tool. This project demonstrates frontend development skills, UI/UX design, and state management using modern React practices.
 
-## Project info
+Key Features User Authentication & Roles: Simple login system with two roles: Developer and Manager.
 
-**URL**: https://lovable.dev/projects/a1f363a2-eda1-428f-adba-4fc158442559
+Developers manage their own tasks/bugs.
 
-## How can I edit this code?
+Managers oversee all open and closed bugs and approve bug closure requests.
 
-There are several ways of editing your application.
+Dashboard: Role-based dashboard displaying tasks with detailed info and a trend line showing daily concurrent tasks.
 
-**Use Lovable**
+Task/Bug Management: Developers can create, edit, delete, and close tasks. Managers verify closure or reopen bugs pending approval. Tasks include fields like Title, Description, Priority, Status, Assignee, and important dates. Filter and sort tasks by different criteria.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a1f363a2-eda1-428f-adba-4fc158442559) and start prompting.
+Time Tracking: Log time spent on tasks. Managers can view aggregated time data across developers.
 
-Changes made via Lovable will be committed automatically to this repo.
+UI/UX: Clean, intuitive, and responsive design suitable for desktop and mobile devices.
 
-**Use your preferred IDE**
+Technology Stack Frontend: React.js with Vite
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Styling: CSS / CSS-in-JS (styled-components or other)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+State Management: (e.g., Redux, Zustand, or React Context API)
 
-Follow these steps:
+Build Tool: Vite for fast development and build times
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+How to Run Locally Clone the repo
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Run npm install to install dependencies
 
-# Step 3: Install the necessary dependencies.
-npm i
+Run npm run dev to start the development server
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Additional Notes: Authentication is mock/simple for demo purposes; no backend integration.
 
-**Edit a file directly in GitHub**
+The project focuses on frontend functionality and UI/UX best practices.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Feel free to explore the codebase to understand component structure, routing, and state management.
 
-**Use GitHub Codespaces**
+Demo & Video Live Demo: [https://drive.google.com/file/d/15mp9jSUNqET-CdZOFS4sToRYd7mIw1WD/view?usp=drivesdk/]
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Video Demo: [https://fealt-x-bugtracker.netlify.app/]
 
-## What technologies are used for this project?
+Evaluation Criteria Covered Complete MVP with working UI
 
-This project is built with:
+Responsive and user-friendly interface
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Clean, modular, and maintainable code
 
-## How can I deploy this project?
+Development Strategies & Approaches To build a scalable, maintainable, and user-friendly bug/task tracker application, the following strategies were implemented or considered during development:
 
-Simply open [Lovable](https://lovable.dev/projects/a1f363a2-eda1-428f-adba-4fc158442559) and click on Share -> Publish.
+Component-Based Architecture The UI is broken down into reusable, self-contained React components to promote modularity and ease of maintenance.
+Separation of concerns ensures that each component handles only its specific logic and presentation.
 
-## Can I connect a custom domain to my Lovable project?
+Role-Based Access Control User roles (Developer and Manager) define access and permissions within the app.
+Conditional rendering and route protection prevent unauthorized access to sensitive features.
 
-Yes, you can!
+State Management Used React’s built-in state hooks or an external state management library (like Redux or Zustand) to efficiently handle application state.
+Centralized state makes it easier to manage tasks, user info, and UI states across components.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Client-Side Routing React Router manages navigation between different views (Dashboard, Task Creation, etc.) without page reloads, enabling a smooth SPA experience.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Form Handling & Validation Controlled forms are used for creating and editing tasks with input validation to ensure data integrity.
+
+User feedback is provided for validation errors and successful actions.
+
+Time Tracking & Data Visualization Implemented a time tracking feature to log task durations.
+Used charts (e.g., with libraries like Chart.js or Recharts) to display trends and summaries visually on the dashboard.
+
+Responsive Design Designed with mobile-first principles and responsive CSS to ensure usability across different screen sizes and devices.
+
+Mock Authentication Simple authentication logic with hardcoded credentials to simulate login behavior in the absence of a backend.
+
+Version Control & Deployment Git is used for source control, with a clean commit history.
+
+The app is deployed on platforms like Netlify or Vercel, leveraging modern CI/CD pipelines for automated builds and deployments.
+
+Future-Ready Codebase Code is structured to allow easy integration of backend APIs, real authentication, and advanced features like notifications or collaborative task management.
