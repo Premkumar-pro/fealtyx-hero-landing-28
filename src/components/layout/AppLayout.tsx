@@ -14,10 +14,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background dark:bg-background transition-colors duration-300">
-      <header>
+      <header className="w-full flex justify-between items-center h-16 px-4 sm:px-6 border-b bg-background/80 dark:bg-background dark:text-white backdrop-blur-md z-40 transition-colors duration-300">
         <a href="/" className="flex items-center gap-3">
           <img 
-            src="" 
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=50&h=50&fit=crop&crop=center" 
             alt="Deer Logo" 
             className="w-10 h-10 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
             onError={(e) => {
