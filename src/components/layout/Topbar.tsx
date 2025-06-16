@@ -21,11 +21,15 @@ export const Topbar = () => {
         >
           <Menu className="w-6 h-6" />
         </Button>
-        <a href="/" className="flex items-center gap-2 ml-2">
+        <a href="/" className="flex items-center gap-3 ml-2">
           <img 
-            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=40&h=40&fit=crop&crop=center" 
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=50&h=50&fit=crop&crop=center" 
             alt="Deer Logo" 
-            className="w-8 h-8 rounded-full object-cover"
+            className="w-10 h-10 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
+            onError={(e) => {
+              console.log('Image failed to load');
+              e.currentTarget.style.display = 'none';
+            }}
           />
           <span className="text-xl font-bold text-primary dark:text-white">FealtyX</span>
         </a>

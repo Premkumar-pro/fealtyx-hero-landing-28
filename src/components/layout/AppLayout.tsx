@@ -15,11 +15,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background dark:bg-background transition-colors duration-300">
       <header className="w-full flex justify-between items-center h-16 px-4 sm:px-6 border-b bg-background/80 dark:bg-background dark:text-white backdrop-blur-md z-40 transition-colors duration-300">
-        <a href="/" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-3">
           <img 
-            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=40&h=40&fit=crop&crop=center" 
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=50&h=50&fit=crop&crop=center" 
             alt="Deer Logo" 
-            className="w-8 h-8 rounded-full object-cover"
+            className="w-10 h-10 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
+            onError={(e) => {
+              console.log('Image failed to load');
+              e.currentTarget.style.display = 'none';
+            }}
           />
           <span className="text-xl font-bold text-primary dark:text-white">FealtyX</span>
         </a>
