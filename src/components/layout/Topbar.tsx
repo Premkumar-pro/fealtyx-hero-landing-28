@@ -21,7 +21,14 @@ export const Topbar = () => {
         >
           <Menu className="w-6 h-6" />
         </Button>
-        <a href="/" className="text-xl font-bold text-primary dark:text-white ml-2">FealtyX</a>
+        <a href="/" className="flex items-center gap-2 ml-2">
+          <img 
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=40&h=40&fit=crop&crop=center" 
+            alt="Deer Logo" 
+            className="w-8 h-8 rounded-full object-cover"
+          />
+          <span className="text-xl font-bold text-primary dark:text-white">FealtyX</span>
+        </a>
       </div>
       {/* Right section (optional: user controls, etc.) */}
       <div />
